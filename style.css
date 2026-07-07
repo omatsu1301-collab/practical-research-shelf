@@ -1,0 +1,947 @@
+/* =========================
+  実践型リサーチ棚
+  style.css
+========================= */
+
+/* ---------- 基本設定 ---------- */
+
+:root {
+  --bg: #f8f3ea;
+  --bg-soft: #fbf8f2;
+  --sidebar-bg: #f3eadc;
+  --card-bg: #fffdf8;
+  --card-bg-soft: #fbf6ed;
+
+  --text-main: #2f281f;
+  --text-sub: #75695d;
+  --text-muted: #9b8d7e;
+
+  --line: #e3d8c9;
+  --line-soft: #eee4d8;
+
+  --accent: #8a6a43;
+  --accent-dark: #5e4630;
+  --accent-soft: #eadcc9;
+
+  --green: #7ca66a;
+  --green-soft: #e8f1e4;
+
+  --blue: #6f91b8;
+  --blue-soft: #e8f0f8;
+
+  --orange: #c28a4a;
+  --orange-soft: #f5eadb;
+
+  --shadow-soft: 0 12px 30px rgba(69, 52, 35, 0.08);
+  --shadow-card: 0 8px 18px rgba(69, 52, 35, 0.07);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --sidebar-width: 280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 36%),
+    linear-gradient(135deg, #f8f3ea 0%, #fbf8f2 45%, #f3eadc 100%);
+  font-family:
+    "Hiragino Sans",
+    "Yu Gothic",
+    "Yu Gothic UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* ---------- 全体レイアウト ---------- */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- サイドバー ---------- */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  padding: 30px 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.84), rgba(239, 227, 211, 0.9)),
+    var(--sidebar-bg);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.brand {
+  padding: 4px 4px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "Times New Roman",
+    serif;
+  font-weight: 700;
+}
+
+.brand-subtitle {
+  margin: 8px 0 0;
+  color: var(--text-sub);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}
+
+.sidebar-nav,
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-link {
+  min-height: 44px;
+  padding: 10px 12px;
+  color: var(--text-sub);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text-main);
+  transform: translateX(2px);
+}
+
+.nav-link.is-active {
+  color: var(--accent-dark);
+  background: linear-gradient(135deg, #efe1cc, #f8f1e7);
+  border: 1px solid rgba(138, 106, 67, 0.16);
+  box-shadow: var(--shadow-card);
+}
+
+.nav-icon {
+  width: 24px;
+  color: var(--accent);
+  font-size: 15px;
+  text-align: center;
+  flex: 0 0 24px;
+}
+
+.sidebar-section {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-card {
+  margin-top: auto;
+  padding: 14px;
+  background: rgba(255, 253, 248, 0.75);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  color: #fffdf8;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-status {
+  margin: 2px 0 0;
+  color: var(--green);
+  font-size: 12px;
+}
+
+.sidebar-close-button {
+  padding: 10px 12px;
+  color: var(--text-sub);
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.sidebar-close-button:hover {
+  background: rgba(255, 255, 255, 0.48);
+}
+
+/* ---------- メイン ---------- */
+
+.main-area {
+  flex: 1;
+  min-width: 0;
+  padding: 30px 36px 42px;
+}
+
+.topbar {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.today-date {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 14px;
+}
+
+.today-message {
+  margin: 4px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box {
+  width: min(420px, 42vw);
+  height: 46px;
+  padding: 0 12px 0 16px;
+  background: rgba(255, 253, 248, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-card);
+}
+
+.search-label {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  color: var(--text-main);
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: #b6aa9c;
+}
+
+kbd {
+  padding: 2px 8px;
+  color: var(--text-muted);
+  background: #f4eadc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.icon-button {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 253, 248, 0.8);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- ダッシュボード ---------- */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.card {
+  padding: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 250, 243, 0.94)),
+    var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+.card-header a,
+.card-footer-link {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.card-footer-link {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+  display: block;
+  text-align: center;
+}
+
+.card-footer-link:hover,
+.card-header a:hover {
+  color: var(--accent-dark);
+}
+
+/* ---------- タグ ---------- */
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tag-green {
+  color: #577a48;
+  background: var(--green-soft);
+}
+
+.tag-blue {
+  color: #516f91;
+  background: var(--blue-soft);
+}
+
+.tag-orange {
+  color: #916538;
+  background: var(--orange-soft);
+}
+
+/* ---------- 今日読む記事 ---------- */
+
+.today-articles-card {
+  min-height: 455px;
+}
+
+.featured-article {
+  padding: 14px;
+  background: var(--card-bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.article-thumbnail {
+  min-height: 128px;
+  color: #fffaf2;
+  background:
+    linear-gradient(135deg, rgba(138, 106, 67, 0.92), rgba(65, 47, 31, 0.9)),
+    var(--accent);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-family:
+    "Times New Roman",
+    serif;
+  letter-spacing: 0.08em;
+}
+
+.article-body {
+  min-width: 0;
+}
+
+.article-meta {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-dot {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.featured-article h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.article-author {
+  margin: 6px 0 0;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.article-summary {
+  margin: 8px 0 10px;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+progress {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background: #eee4d8;
+  border-radius: 999px;
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(90deg, var(--green), #a8bf82);
+  border-radius: 999px;
+}
+
+progress::-moz-progress-bar {
+  background: linear-gradient(90deg, var(--green), #a8bf82);
+  border-radius: 999px;
+}
+
+.progress-row span {
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.article-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-article {
+  padding: 12px;
+  background: rgba(255, 253, 248, 0.74);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-thumbnail {
+  width: 56px;
+  height: 48px;
+  color: var(--accent-dark);
+  background: #efe4d4;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.mini-article h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.read-status {
+  padding: 4px 9px;
+  color: #557748;
+  background: var(--green-soft);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------- 英語メモ ---------- */
+
+.notebook-paper {
+  position: relative;
+  padding: 18px 18px 18px 24px;
+  background:
+    linear-gradient(90deg, transparent 0, transparent 28px, rgba(211, 129, 103, 0.28) 29px, transparent 30px),
+    repeating-linear-gradient(
+      180deg,
+      #fffdf8 0,
+      #fffdf8 31px,
+      #eadfd0 32px
+    );
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+}
+
+.note-date-row {
+  margin-bottom: 12px;
+  color: var(--text-sub);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.english-phrase {
+  margin: 0 0 10px;
+  color: #2e2a24;
+  font-size: 19px;
+  line-height: 1.6;
+  font-family:
+    "Times New Roman",
+    "Yu Mincho",
+    serif;
+  font-style: italic;
+}
+
+.translation {
+  margin: 0 0 18px;
+  color: var(--text-sub);
+  font-size: 14px;
+}
+
+.notebook-paper h3 {
+  margin: 14px 0 6px;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-family:
+    "Times New Roman",
+    serif;
+  letter-spacing: 0.05em;
+}
+
+.vocabulary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.vocabulary-list label,
+.training-list label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+/* ---------- 実践ログ ---------- */
+
+.tabs {
+  margin-bottom: 18px;
+  padding: 4px;
+  background: #f6eee4;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tab-button {
+  padding: 8px 12px;
+  color: var(--text-sub);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+}
+
+.tab-button.is-active {
+  color: #fffaf2;
+  background: var(--accent);
+  box-shadow: var(--shadow-card);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.timeline-icon {
+  width: 38px;
+  height: 38px;
+  background: #f1e7da;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.timeline-content {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.timeline-content time {
+  float: right;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.timeline-content h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.timeline-content p {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+/* ---------- 食事メモ ---------- */
+
+.meal-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(150px, 0.75fr);
+  gap: 14px;
+}
+
+.meal-list {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.meal-row {
+  padding: 12px 14px;
+  background: rgba(255, 253, 248, 0.72);
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.meal-row + .meal-row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.meal-row strong {
+  color: var(--accent-dark);
+}
+
+.meal-row p {
+  margin: 0;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.nutrition-summary {
+  padding: 14px;
+  background: #f7efe4;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.nutrition-summary p {
+  margin: 0;
+}
+
+.nutrition-summary span {
+  color: var(--text-muted);
+  font-size: 12px;
+  display: block;
+}
+
+.nutrition-summary strong {
+  margin-top: 2px;
+  display: block;
+  font-size: 16px;
+}
+
+/* ---------- トレーニングメモ ---------- */
+
+.training-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 0.8fr);
+  gap: 16px;
+}
+
+.training-grid h3,
+.body-note h3 {
+  margin: 0 0 10px;
+  color: var(--accent-dark);
+  font-size: 14px;
+}
+
+.training-list {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.training-list li {
+  padding: 10px 12px;
+  background: rgba(255, 253, 248, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.training-list li + li {
+  border-top: 1px solid var(--line-soft);
+}
+
+.training-list li > span {
+  color: var(--text-sub);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.body-note {
+  padding: 14px;
+  background: #f7efe4;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+}
+
+.body-note p {
+  margin: 0 0 14px;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.body-stats {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.body-stats div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.body-stats dt {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.body-stats dd {
+  margin: 0;
+  font-weight: 800;
+}
+
+/* ---------- あとで読む ---------- */
+
+.read-later-list {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.read-later-list li {
+  padding: 13px 14px;
+  background: rgba(255, 253, 248, 0.72);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.read-later-list li + li {
+  border-top: 1px solid var(--line-soft);
+}
+
+.read-later-list strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.read-later-list span:not(.tag) {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ---------- フッター ---------- */
+
+.dashboard-footer {
+  margin-top: 28px;
+  color: var(--text-muted);
+  text-align: center;
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+  letter-spacing: 0.12em;
+}
+
+/* ---------- 軽いレスポンシブ ---------- */
+
+@media (max-width: 1180px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .search-box {
+    width: 340px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .main-area {
+    padding: 24px 18px 36px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .topbar-actions {
+    width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-grid,
+  .training-grid,
+  .featured-article {
+    grid-template-columns: 1fr;
+  }
+
+  .article-thumbnail {
+    min-height: 120px;
+  }
+}
