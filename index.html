@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>実践型リサーチ棚 | Practical Research Shelf</title>
+
+  <!-- 次に作るCSSを読み込む -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 次に作るJavaScriptを読み込む -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- =========================
+      左サイドバー
+    ========================== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <h1 class="brand-title">実践型リサーチ棚</h1>
+        <p class="brand-subtitle">Practical Research Shelf</p>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="メインメニュー">
+        <ul class="nav-list">
+          <li>
+            <a class="nav-link is-active" href="#">
+              <span class="nav-icon">▣</span>
+              <span>今日の棚</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">
+              <span class="nav-icon">☰</span>
+              <span>記事棚</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">
+              <span class="nav-icon">Aa</span>
+              <span>英語ノート</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">
+              <span class="nav-icon">✎</span>
+              <span>実践ログ</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">
+              <span class="nav-icon">□</span>
+              <span>アーカイブ</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">
+              <span class="nav-icon">#</span>
+              <span>タグ管理</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-section">
+        <a class="nav-link" href="#">
+          <span class="nav-icon">?</span>
+          <span>使い方ガイド</span>
+        </a>
+        <a class="nav-link" href="#">
+          <span class="nav-icon">⚙</span>
+          <span>設定</span>
+        </a>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-avatar" aria-hidden="true">三</div>
+        <div>
+          <p class="profile-name">三ツ橋｜ソロ開発者</p>
+          <p class="profile-status">● 集中モード</p>
+        </div>
+      </div>
+
+      <button class="sidebar-close-button" type="button">
+        ← サイドバーを閉じる
+      </button>
+    </aside>
+
+    <!-- =========================
+      右メインエリア
+    ========================== -->
+    <main class="main-area">
+
+      <!-- 上部ヘッダー -->
+      <header class="topbar">
+        <div class="greeting">
+          <p class="today-date">2026年7月7日 火曜日</p>
+          <p class="today-message">☀ おはよう、三ツ橋。今日も棚を育てるぞ。</p>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="search-box">
+            <span class="search-label">検索</span>
+            <input
+              type="search"
+              placeholder="検索（記事・メモ・タグ）"
+              aria-label="記事・メモ・タグを検索"
+            />
+            <kbd>⌘K</kbd>
+          </label>
+
+          <button class="icon-button" type="button" aria-label="通知">
+            🔔
+          </button>
+        </div>
+      </header>
+
+      <!-- コンテンツ全体 -->
+      <div class="dashboard-grid">
+
+        <!-- =========================
+          今日読む記事
+        ========================== -->
+        <section class="card today-articles-card">
+          <div class="card-header">
+            <h2>今日読む記事</h2>
+            <a href="#">すべて見る</a>
+          </div>
+
+          <article class="featured-article">
+            <div class="article-thumbnail">
+              <span>Book</span>
+            </div>
+
+            <div class="article-body">
+              <div class="article-meta">
+                <span class="tag tag-green">習慣化</span>
+                <span class="status-dot">● 精読中</span>
+              </div>
+
+              <h3>小さな習慣が人生を変える 複利の力を活かす方法</h3>
+
+              <p class="article-author">James Clear</p>
+
+              <p class="article-summary">
+                小さな改善を日々積み重ねることの重要性と、習慣形成のための具体的なフレームワークを学ぶ。
+              </p>
+
+              <div class="progress-row">
+                <progress value="64" max="100">64%</progress>
+                <span>64%</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="article-list">
+            <article class="mini-article">
+              <div class="mini-thumbnail">AI</div>
+              <div>
+                <h3>生成AI時代の学習戦略</h3>
+                <div class="tag-row">
+                  <span class="tag tag-blue">AI</span>
+                  <span class="tag tag-blue">学習</span>
+                </div>
+              </div>
+              <span class="read-status">読了</span>
+            </article>
+
+            <article class="mini-article">
+              <div class="mini-thumbnail">思</div>
+              <div>
+                <h3>ソロ開発のための意思決定フレームワーク</h3>
+                <div class="tag-row">
+                  <span class="tag tag-orange">意思決定</span>
+                </div>
+              </div>
+              <span class="read-status">読了</span>
+            </article>
+          </div>
+
+          <a class="card-footer-link" href="#">記事棚へ →</a>
+        </section>
+
+        <!-- =========================
+          英語メモ
+        ========================== -->
+        <section class="card english-note-card">
+          <div class="card-header">
+            <h2>英語メモ</h2>
+            <a href="#">すべて見る</a>
+          </div>
+
+          <div class="notebook-paper">
+            <div class="note-date-row">
+              <span>Today's Phrase</span>
+              <time datetime="2026-07-07">2026/7/7</time>
+            </div>
+
+            <blockquote class="english-phrase">
+              The compounding effect of small actions leads to remarkable results.
+            </blockquote>
+
+            <p class="translation">
+              小さな行動の複利効果が、驚くべき結果をもたらす。
+            </p>
+
+            <h3>Vocabulary</h3>
+
+            <ul class="vocabulary-list">
+              <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>compounding（複利の、累積する）</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>remarkable（顕著な、注目すべき）</span>
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>leads to（〜につながる）</span>
+                </label>
+              </li>
+            </ul>
+
+            <h3>Memo</h3>
+            <p>
+              習慣化の文脈でよく出てくる表現。自分の言葉で説明できるようにする。
+            </p>
+          </div>
+
+          <a class="card-footer-link" href="#">英語ノートへ →</a>
+        </section>
+
+        <!-- =========================
+          実践ログ
+        ========================== -->
+        <section class="card practice-log-card">
+          <div class="card-header">
+            <h2>実践ログ</h2>
+            <a href="#">すべて見る</a>
+          </div>
+
+          <div class="tabs" aria-label="実践ログの表示期間">
+            <button class="tab-button is-active" type="button" data-tab="today">今日</button>
+            <button class="tab-button" type="button" data-tab="week">今週</button>
+            <button class="tab-button" type="button" data-tab="month">今月</button>
+          </div>
+
+          <ol class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-icon">📖</div>
+              <div class="timeline-content">
+                <time>09:15</time>
+                <h3>読書実践</h3>
+                <p>Atomic Habits 第3章まで精読。習慣スコアリングの手法が参考になった。</p>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-icon">🧪</div>
+              <div class="timeline-content">
+                <time>14:40</time>
+                <h3>実験・検証</h3>
+                <p>朝のルーティンを10分短縮する実験。集中時間が+23分増加。</p>
+              </div>
+            </li>
+
+            <li class="timeline-item">
+              <div class="timeline-icon">📝</div>
+              <div class="timeline-content">
+                <time>21:10</time>
+                <h3>学びの記録</h3>
+                <p>if-thenプランの具体例を3つ作成。</p>
+              </div>
+            </li>
+          </ol>
+
+          <a class="card-footer-link" href="#">実践ログへ →</a>
+        </section>
+
+        <!-- =========================
+          食事メモ
+        ========================== -->
+        <section class="card meal-card">
+          <div class="card-header">
+            <h2>食事メモ</h2>
+            <time datetime="2026-07-07">2026/7/7</time>
+          </div>
+
+          <div class="meal-grid">
+            <div class="meal-list">
+              <div class="meal-row">
+                <strong>朝食</strong>
+                <p>オートミール、バナナ、ゆで卵、ブラックコーヒー</p>
+              </div>
+
+              <div class="meal-row">
+                <strong>昼食</strong>
+                <p>鶏むね肉のサラダ、玄米おにぎり、味噌汁</p>
+              </div>
+
+              <div class="meal-row">
+                <strong>夕食</strong>
+                <p>焼き魚、野菜炒め、玄米、納豆、味噌汁</p>
+              </div>
+            </div>
+
+            <div class="nutrition-summary">
+              <p>
+                <span>カロリー</span>
+                <strong>1,892 kcal</strong>
+              </p>
+              <p>
+                <span>P / F / C</span>
+                <strong>120g / 58g / 210g</strong>
+              </p>
+              <p>
+                <span>体調</span>
+                <strong>🙂 良い</strong>
+              </p>
+            </div>
+          </div>
+
+          <a class="card-footer-link" href="#">食事メモへ →</a>
+        </section>
+
+        <!-- =========================
+          トレーニングメモ
+        ========================== -->
+        <section class="card training-card">
+          <div class="card-header">
+            <h2>トレーニングメモ</h2>
+            <time datetime="2026-07-07">2026/7/7</time>
+          </div>
+
+          <div class="training-grid">
+            <div>
+              <h3>今日のメニュー</h3>
+
+              <ul class="training-list">
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <span>スクワット</span>
+                  </label>
+                  <span>3 × 10</span>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <span>腕立て伏せ</span>
+                  </label>
+                  <span>3 × 15</span>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <span>プランク</span>
+                  </label>
+                  <span>3 × 60秒</span>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" />
+                    <span>懸垂</span>
+                  </label>
+                  <span>3 × 8</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="body-note">
+              <h3>体調・気づき</h3>
+              <p>肩の調子が良い。懸垂のフォームを改善中。</p>
+
+              <dl class="body-stats">
+                <div>
+                  <dt>体重</dt>
+                  <dd>68.2 kg</dd>
+                </div>
+                <div>
+                  <dt>体脂肪率</dt>
+                  <dd>15.4%</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <a class="card-footer-link" href="#">トレーニングメモへ →</a>
+        </section>
+
+        <!-- =========================
+          あとで読む
+        ========================== -->
+        <section class="card read-later-card">
+          <div class="card-header">
+            <h2>あとで読む</h2>
+            <a href="#">すべて見る</a>
+          </div>
+
+          <ul class="read-later-list">
+            <li>
+              <a href="#">
+                <strong>Deep Workの実践ガイド 集中力を最大化する4つのルール</strong>
+                <span>blog.example.com</span>
+              </a>
+              <span class="tag tag-blue">集中力</span>
+            </li>
+
+            <li>
+              <a href="#">
+                <strong>なぜ今、ノートを書くことが重要なのか</strong>
+                <span>note.com</span>
+              </a>
+              <span class="tag tag-orange">ノート術</span>
+            </li>
+
+            <li>
+              <a href="#">
+                <strong>認知バイアス一覧と対策方法</strong>
+                <span>mental-models.info</span>
+              </a>
+              <span class="tag tag-green">思考法</span>
+            </li>
+          </ul>
+
+          <a class="card-footer-link" href="#">記事棚へ →</a>
+        </section>
+      </div>
+
+      <footer class="dashboard-footer">
+        <p>小さな積み重ねが、未来の自分をつくる。</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
